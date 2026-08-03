@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  inspector:
+    runs-on: windows-latest
+    steps:
+      - name: Check out inspector
+        uses: actions/checkout@v4
+        with:
+          path: openusd-production-inspector
+      - name: Check out integration fixtures
+        uses: actions/checkout@v4
+        with:
+          repository: Cartterr/openusd-procedural-asset-pipeline
+          path: openusd-procedural-asset-pipeline
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: openusd-production-inspector/requirements.txt
+      - name: Install dependencies
+        working-directory: openusd-production-inspector
+        run: py -3.12 -m pip install -r requirements.txt
+      - name: Test inspector contracts
+        working-directory: openusd-production-inspector
+        run: py -3.12 -m unittest discover -s tests -v
