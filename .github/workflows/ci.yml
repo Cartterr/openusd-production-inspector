@@ -12,15 +12,15 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Check out inspector
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           path: openusd-production-inspector
       - name: Check out integration fixtures
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: Cartterr/openusd-procedural-asset-pipeline
           path: openusd-procedural-asset-pipeline
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
           cache: pip
