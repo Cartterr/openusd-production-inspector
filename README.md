@@ -2,6 +2,8 @@
 
 A native Python CLI and library for inspecting OpenUSD stages and generating deterministic scene-health reports.
 
+The [OpenUSD Procedural Asset Pipeline](https://github.com/Cartterr/openusd-procedural-asset-pipeline) uses this repository as its independent publication gate.
+
 ## Status
 
 Version 0.1 is a read-only validation engine for production asset packages. It reports stage state, composition, references, payloads, sublayers, texture assets, missing dependencies, and six release-gate rules. Every command supports deterministic JSON output and documented process exit codes.
